@@ -13,6 +13,7 @@ English | [简体中文](./README.zh-CN.md)
 [Introduction](#-introduction) ·
 [Install](#-install) ·
 [Skills](#-skills) ·
+[Usage Guide](#-usage-guide) ·
 [Supported Agents](#-supported-agents) ·
 [Ecosystem](#-ecosystem)
 
@@ -55,6 +56,57 @@ npx skills add full-stack-skills/document-skills --skill <skill-name>
 | `technical-blog-doc` | Write reproducible technical tutorials with environment, commands, and evidence |
 
 `full-stack-doc` includes the original detailed root, version, module, and delivery templates plus Java, Rust, plugin, skill-ecosystem, and complete-reference README templates. The Rust common template composes with profiles for file formats, upstream parity, toolbox workspaces, authentication frameworks, design-only repositories, and multilingual layouts. Its complete architecture master composes with runtime, plugin, edge, event, AI/RAG, and observability/control-plane profiles. API discovery loads focused guidance for OpenAPI, Spring, FastAPI, NestJS, Express, or Gin.
+
+## 🚀 Usage Guide
+
+### Invoke a skill
+
+After installation, name the skill explicitly and describe the expected artifact, source material, output location, and verification requirements. Client syntax varies: some clients expose `/skill-name`, Codex-compatible prompts may use `$skill-name`, and clients with automatic discovery also accept the plain skill name.
+
+These three prompts are equivalent in intent:
+
+```text
+/full-stack-doc Create a detailed architecture document from the current repository.
+$full-stack-doc Create a detailed architecture document from the current repository.
+Use the full-stack-doc skill to create a detailed architecture document from the current repository.
+```
+
+The examples below use `/skill-name`; replace the prefix when your client uses another form.
+
+### Choose the right skill
+
+| Skill | Use it for | Example prompt |
+|-------|------------|----------------|
+| `api-doc-generator` | API inventories and evidence-backed endpoint references | `Use /api-doc-generator to generate API documentation from the current Spring controllers, DTOs, and tests, with a source for every endpoint.` |
+| `doc-coauthoring` | Collaborative proposals, RFCs, specifications, and reader tests | `Use /doc-coauthoring to help me draft a cache-refactoring RFC and run an independent reader review.` |
+| `full-stack-doc` | Product documentation suites, PRDs, architecture, UI, versions, delivery docs, and project READMEs | `Use /full-stack-doc to audit the existing product-docs tree and complete the missing product-level and version-level documents.` |
+| `markitdown-awesome` | MarkItDown capability discovery and tool selection | `Use /markitdown-awesome to compare MarkItDown, Pandoc, and Docling for our PDF-to-Markdown workflow.` |
+| `markitdown-cli` | Exact `markitdown` commands, flags, pipelines, and batch conversion | `Use /markitdown-cli to provide commands that batch-convert DOCX and PPTX files under docs/.` |
+| `markitdown-ocr` | OCR for scanned pages and images embedded in PDF or Office files | `Use /markitdown-ocr to convert this scanned PDF to Markdown and document model configuration, cost, and fallback behavior.` |
+| `mermaid` | Markdown-native flows, sequences, states, journeys, timelines, and lightweight architecture | `Use /mermaid to turn the order-refund flow into a sequence diagram that renders in README.md.` |
+| `plantuml` | Precise UML, C4, deployment, and enterprise architecture source | `Use /plantuml to generate C4 container and deployment diagrams for the authentication system.` |
+| `processon-diagram-generator` | Hosted, editable ProcessOn diagrams and optional rendering | `Use /processon-diagram-generator to create an editable login swimlane diagram and return its DSL and rendered output.` |
+| `processon-mindmap` | ProcessOn-ready hierarchical mind-map outlines | `Use /processon-mindmap to organize these meeting notes into a ProcessOn-ready mind map.` |
+| `technical-blog-doc` | Reproducible tutorials, integration guides, deployment articles, and verification records | `Use /technical-blog-doc to write a reproducible deployment tutorial from the current repository and include a verification record.` |
+
+`processon-diagram-generator` requires `PROCESSON_API_KEY` for remote generation. The other examples can begin with local source or material supplied in the conversation; access to external services still depends on the active client and environment.
+
+### `full-stack-doc` prompt examples
+
+```text
+Use /full-stack-doc to create a detailed architecture document.
+Use /full-stack-doc to create detailed English and Chinese README documents.
+Use /full-stack-doc to create a detailed technical deep-dive document.
+Use /full-stack-doc to initialize the 10 product-level documents and the 7 V1 documents.
+Use /full-stack-doc to create a V2 PRD, version architecture, and feature-menu plan from evidence in the current repository.
+Use /full-stack-doc to audit the current product-docs structure, naming, cross-references, and content gaps, separating facts, inferences, and open questions.
+```
+
+For more reliable output, make the request concrete:
+
+```text
+Use /full-stack-doc with {repository or source material} for {target readers} to create {document type} in {output directory}. Inspect existing documents and source first, preserve confirmed conventions, mark assumptions and open questions, and run the applicable validation checks before delivery.
+```
 
 ## ✅ Quality checks
 
